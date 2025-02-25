@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<!-- Sets the Source for the Javascript to run in the HTML file -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../cs/js/utils.js"></script>
+
+<html <meta charset="utf-8">
+</meta>
+
+<head>
+  <title>
+    Fleet Manager Landing Page
+  </title>
+
+  <!-- References the Stylesheet for the CSS on the Login Page -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+    integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/supply.css">
+</head>
+
+<body>
+  <!-- Creates a Section for the Info Below to be held in  -->
+  <div class="mainbody">
+    <center>
+      <h3 style="font-size:24px;">Fleet Manager Dashboard</h3>
+
+      <!-- Welcomes the user with their first and last name-->
+      <!-- Feel free to move this-->
+      <p id="welcome">Welcome!</p>
+  </div>
+  <div class="container">
+    <center>
+
+      <br></br>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>Current Fleets</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+
+              <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect">Fleet 1</button>
+            </th>
+
+
+          </tr>
+          <tr>
+            <th scope="row">
+
+              <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect">Fleet 2</button>
+            </th>
+
+
+          </tr>
+          <tr>
+            <th scope="row">
+
+              <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect">Fleet 3</button>
+            </th>
+
+
+          </tr>
+          <tr>
+            <th scope="row">
+
+              <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect">Fleet 4</button>
+            </th>
+
+
+          </tr>
+          <tr>
+            <th scope="row">
+
+              <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect">Fleet 5</button>
+            </th>
+
+
+          </tr>
+          <tr>
+            <th scope="row">
+
+              <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect">Fleet 6</button>
+            </th>
+
+
+          </tr>
+        </tbody>
+      </table>
+
+
+      <!-- Button Allows the Logout to end the Session and Return to the login page -->
+      <button class="button logoutButton" name="logButton" onclick="load_page('index.html')">Logout</button>
+
+      <br></br>
+    </center>
+
+
+    <!-- Section where the buttons for Registration of Vehicles and Fleets and also Changing Info. -->
+    <div class="button_cont" align="center">
+      <br></br>
+      <center>
+        <!-- Each button will send to the Desired page. -->
+        <a class="example_b" onclick="load_page('register_fleet.html')">Register New Fleet</a>
+        <a class="example_b" onclick="load_page('register_vehicle.html')">Register New Vehicle</a>
+        <a class="example_b" onclick="load_page('vehicle_directory.html')">Vehicle Directory</a>
+        <a class="example_b" onclick="load_page('vehicle_simulator_map.html')">Live Vehicle Map</a>
+        <a class="example_b" onclick="load_page('order_history.html')">Order History</a>
+    </div>
+    <!-- <button style="background-color:black;" onclick="load_page('vehicle_map.html')">Live Vehicle Map</button> -->
+
+  </div>
+
+  <script>
+        var fullName = get_cookie("supply_firstname") + " " + get_cookie("supply_lastname");
+        console.log(fullName);
+        document.getElementById("welcome").innerHTML = "Welcome " + fullName + "!";
+  </script>
+</body>
+
+</html>

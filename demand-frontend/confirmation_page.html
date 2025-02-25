@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/order_request.js"></script>
+<script src="../cs/js/utils.js"></script>
+<html>
+<meta charset="utf-8">
+</meta>
+
+<head>
+  <title>
+    Current Order
+  </title>
+  <link rel="stylesheet" type="text/css" href="css/demand.css">
+</head>
+
+<body>
+  <div>
+    <button class="button logoutButton" name="logButton" onclick="load_page('dashboard.html')">Back to Dashboard</button>
+  </div>
+  <div class="mainbody">
+    <center>
+      <h3>Current Order!</h3>
+      <p style="text-align:center;" id="response"> </p>
+      <div align="center"><iframe id="map"
+          src="map.html"
+          width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+
+      <!-- <button class="registerButton" onclick="sendOrder()">Submit Order</button> -->
+    </center>
+
+  </div>
+
+
+
+  <div>
+
+    <br><small>
+
+    </small>
+
+  </div>
+
+  <!-- <div class="mainbody">
+        <h3 id="submitted";></h3>
+
+        <br></br>
+        <h4 id="response";></h4>
+      </div> -->
+
+</body>
+
+<script>
+  // Grabbing the response string from the order page using session storage
+  var final_response = sessionStorage.getItem("final_response")
+
+  console.log(final_response);
+  var result = JSON.parse(final_response);
+
+  var pickup_address = result.pickup_address;
+  var dropoff_address = result.dropoff_address;
+
+  var pickup_url = encodeURIComponent(pickup_address.split(',').join("").trim());
+  var dropoff_url = encodeURIComponent(dropoff_address.split(',').join("").trim());
+  document.getElementById('map').src = "map.html?start=" + pickup_url + "&end=" + dropoff_url;
+
+  var timestamp = result.timestamp;
+  var eta = result.eta;
+
+  console.log(eta);
+
+  var vehicle = result.vehicle_name;
+
+  console.log(vehicle);
+
+  var type = result.vehicle_type;
+
+  console.log(type);
+
+  document.getElementById("response").innerHTML =
+    "Pickup Address: " + pickup_address + "<br>" +
+    "Dropoff Address: " + dropoff_address + "<br>" +
+    "ETA: " + eta + "mins<br>" +
+    "Vehicle: " + vehicle + "<br>" +
+    "Vehicle Type: " + type + "<br>" +
+    "Order Placed at: " + timestamp;
+
+
+
+      // Send an order to the demand server
+      // function sendOrder() {
+      //   var submit;
+      //   var response;
+      //   if (confirm("Do you want to Submit your Order?"))
+      //   {
+      //     submit = "Order Submitted!";
+      //
+      //     response = "Order Details: XXX,XXX,XXX,XXX";
+      //     document.getElementById("response").innerHTML = response
+      //
+      //     var registerDictionary = {
+      //       "username": "bigDaddyWillie69",
+      //       "password": "I need a Tesla",
+      //       "timestamp": Date.now()
+      //     };
+      //
+      // "vehicle_type": vehicle,
+      // "pickup_address": pick,
+      // "dropoff_address": drop,
+      // "username": getCookie("demand_username"),
+      // "timestamp": Date.now()
+      //     sendRequestVehicleToSupplyBackend(registerDictionary);
+      //   }
+      //   else
+      //   {
+      //     submit = "Order Submission was Canceled!";
+      //   }
+      //   document.getElementById("submitted").innerHTML = submit;
+      //   return false;
+      // }
+</script>
+
+</html>

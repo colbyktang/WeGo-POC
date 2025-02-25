@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<script src = "js/order_request.js"></script>
+<script src = "../cs/js/utils.js"></script>
+<html>
+<title> Order Page </title>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/order.css">
+</head>
+<body>
+
+<h2>Order Page</h2>
+<p>Please fill in the following credentials to place a trasnportation order</p>
+<!-- <p id="response">RESPONSE:</p> -->
+<button class="button logoutButton" name="logButton" onclick="load_page('dashboard.html')">Back to Dashboard</button>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+
+        <div class="row">
+          <div class="col-50">
+            <h3>Place Order</h3>
+      <form name="vehicleChoice">
+  			<label for="Transport">Choose a Vehicle:</label>
+  			<select id="vehicle" name="vehicle">
+          <option disabled selected value> -- Select an Option -- </option>
+    			<option value="Van">Van</option>
+    			<option value="Bus">Bus</option>
+    			<option value="Truck">Truck</option>
+  			</select>
+			</form>
+            <br><br/>
+            <label for="pickup"><b> Pick-up Location </b></label>
+            <p><a href="">Use Current Location</a></p>
+			<label for="pStreet"> Street </label>
+            <input type="text" id="pickStreet" name="pickStreet" placeholder="1234 West Example Street">
+			<label for="pCity"> City </label>
+            <input type="text" id="pickCity" name="pickCity" placeholder="Austin">
+			<label for="pState"> State </label>
+            <input type="text" id="pickState" name="pickState" placeholder="TX">
+			<label for="pZip"> ZIP </label>
+            <input type="text" id="pickZip" name="pickZip" placeholder="78704">
+
+            <label for="dropoff"><b> Drop-off Location </b></label>
+            <p><a href="">Find Location On Maps</a></p>
+            <label for="dStreet"> Street </label>
+            <input type="text" id="dropStreet" name="dropStreet" placeholder="1234 West Example Street">
+			<label for="dCity"> City </label>
+            <input type="text" id="dropCity" name="dropCity" placeholder="Austin">
+			<label for="dState"> State </label>
+            <input type="text" id="dropState" name="dropState" placeholder="TX">
+			<label for="dZip"> ZIP </label>
+            <input type="text" id="dropZip" name="dropZip" placeholder="78704">
+        <!-- <form> -->
+  			<!-- <label for="birthdaytime">Pick Up Time:</label>
+  			<input type="datetime-local" id="birthdaytime" name="birthdaytime">
+			</form>
+            <br><br/>
+            <div class="container">
+      <h4>Cart <span class="price" style="color:black"><b>1</b></span></h4>
+      <p><a href="#">Example (Bus)</a> <span class="price">$150</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$150</b></span></p>
+    </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment/Billing Info</h3>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="Bill Bob Joe">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="October">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2018">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="352">
+              </div>
+              <label for="fname"> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Bill Joe">
+            <label for="email"> Email</label>
+            <input type="text" id="email" name="email" placeholder="bob@email.com">
+            <label for="adr"> Address</label>
+            <input type="text" id="adr" name="address" placeholder="1234 N. That St.">
+            <label for="city"> City</label>
+            <input type="text" id="city" name="city" placeholder="Austin">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="TX">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="78704">
+              </div>
+            </div>
+            </div>
+          </div>
+
+        </div> -->
+        <!-- <input type="submit" value="Submit Order" class="btn" onlick="sendOrder()"> -->
+      <!-- </form> -->
+      <button type="submit" class="btn" onclick="sendOrder()">Submit Order</button>
+    </div>
+  </div>
+</div>
+<script>
+    //Send an order to the demand server
+    function sendOrder() {
+      var submit;
+      var response;
+      if (confirm("Do you want to Submit your Order?"))
+      {
+        submit = "Order Submitted!";
+
+        // response = "Order Details: XXX,XXX,XXX,XXX";
+        // document.getElementById("response").innerHTML = response
+
+        //var finalResponse = response;
+        //sessionStorage.setItem("finalResponse", finalResponse);
+
+        var vehicle_type = document.getElementById("vehicle").value;
+
+        var pick_street = document.getElementById("pickStreet").value;
+        var pick_city = document.getElementById("pickCity").value;
+        var pick_state = document.getElementById("pickState").value;
+        var pick_zip = document.getElementById("pickZip").value;
+        var pickup_address = pick_street + ", " + pick_city + ", " + pick_state + " " + pick_zip;
+
+        var drop_street = document.getElementById("dropStreet").value;
+        var drop_city = document.getElementById("dropCity").value;
+        var drop_state = document.getElementById("dropState").value;
+        var drop_zip = document.getElementById("dropZip").value;
+
+        var dropoff_address = drop_street + ", " + drop_city + ", " + drop_state + " " + drop_zip;
+
+        var timestamp = get_timestamp();
+
+        var order_dictionary = {
+          "vehicle_type": vehicle_type,
+          "pickup_address": pickup_address,
+          "dropoff_address": dropoff_address,
+          "username": get_cookie("demand_username"),
+          "timestamp": timestamp
+        };
+
+        send_order_request(order_dictionary);
+
+      }
+      else
+      {
+        submit = "Order Submission was Canceled!";
+      }
+      //document.getElementById("submitted").innerHTML = submit;
+      return false;
+    }
+
+</script>
+</body>
+</html>

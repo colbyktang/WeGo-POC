@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/order_request.js"></script>
+<script src="../cs/js/utils.js"></script>
+<html>
+<meta charset="utf-8">
+</meta>
+
+<head>
+    <title>
+        Login Successful!
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/demand.css">
+</head>
+
+<body>
+    <div class="mainbody">
+        <center>
+            <h3>Login successful!</h3>
+
+            <p id="welcome">Welcome!</p>
+
+            <button class="button logoutButton" name="logButton" onclick="load_page('index.html')">Logout</button>
+            <button class="registerButton" onclick="load_page('order_page.html')">Place Order</button>
+            <button class="registerButton" onclick="load_page('confirmation_page.html')">Current Order</button>
+        </center>
+
+    </div>
+
+    <script>
+        var fullName = get_cookie("demand_firstname") + " " + get_cookie("demand_lastname");
+        console.log(fullName);
+        document.getElementById("welcome").innerHTML = "Welcome " + fullName + "!";
+    </script>
+</body>
+
+</html>

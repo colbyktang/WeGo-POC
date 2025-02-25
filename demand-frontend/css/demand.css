@@ -1,0 +1,119 @@
+body {
+    background-color: #26a8ff;
+    margin: 0;
+}
+
+fieldset {
+  background-color:#baf3ff;
+  padding:16px;
+  max-width:50em;
+  margin: auto;
+}
+
+input, select {
+    padding:6px;
+    max-width:50em;
+    margin: auto;
+}
+
+select {
+    width: 20em;
+}
+
+.labelHomePage {
+    text-align: center;
+}
+
+.inputHomePage {
+    width: 70%;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    min-width: 6em;
+    width: 30%;
+    max-width: 20em;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+.homebtn {
+    width: 20%;
+    margin: 0;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.registerButton {
+    width: 20%;
+    min-width: 5em;
+    padding: 8px 5px;
+    text-align: center;
+    background-color: #03b9f5
+}
+
+h1 {
+    text-align:center;
+}
+
+h2 {
+    text-align:center;
+}
+
+h3 {
+
+    text-align:center;
+}
+
+head {
+    background-color:#baf3ff;
+}
+
+footer {
+    text-align:center;
+}
+
+.loginForm {
+    text-align:center;
+    background-color:#baf3ff;
+    width: 30em;
+    max-width: 40em;
+    align: middle;
+}
+
+.loginForm input {
+    width: 50%;
+}
+
+.logoutButton {
+  width: 20%;
+  min-width: 5em;
+  padding: 8px 5px;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  text-align: center;
+  background-color: #ff0000;
+}
+
+.formHeader {
+    padding: 5px;
+    background-color: #79e8ff
+}
+
+.mainbody {
+    text-align:center;
+    background-color:#e8fffb;
+    padding:16px;
+}
+
+.error {
+    color:red;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<!-- Sets the source for the JS to be ran in the HTML file -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<html>
+    <script type="text/javascript" src="js/register_vehicle.js"></script>
+    <meta charset="utf-8"> </meta>
+    <script type="text/javascript" src="../cs/js/utils.js"></script>
+    <script type="text/javascript" src="../cs/js/login_request.js"></script>
+    <script src="../cs/js/server_status.js"></script>
+    <script src="js/display_vehicle.js"></script>
+    <script>ping_server();</script>
+
+    <head>
+        <title>
+            Team 12 Fleet Manager Login
+        </title>
+
+        <!-- References the Stylesheet for the CSS on the Login Page -->
+        <link rel="stylesheet" type="text/css" href="css/supply.css">
+        <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    </head>
+      <i class="fas fa-cogs"></i>
+    <body>
+      <!-- Creates a Section for the Form Below to be held in  -->
+
+        <div class="mainbody">
+            <h2>Team 12 Fleet Manager Login</h2>
+            <center>
+              <div style="background-image: url('fleet.jpg');">
+            <div class="loginForm">
+                <div class="formHeader">
+                <h3>Login</h3>
+                </div>
+                <!-- This is a Form for the Input Credentials for the Login Page -->
+                <form name="myForm">
+                    <br><br>
+                    <input class="inputHomePage" type="text" placeholder="Username" name="name" onkeydown="enterKey(this)">
+                    <br><br>
+                    <input class="inputHomePage" type="password" placeholder="Password" name="pass" onkeydown="enterKey(this)">
+                    <br><br><br>
+                    <button id="submitButton" name="submitButton" type="button" onclick="validateForm()">Submit</button>
+                    <br><br>
+                </form>
+            </div>
+            </center>
+            <br>
+        </div>
+        <script>
+                    console.log ("Href: " + document.location.href);
+                    console.log ("pathname: " + document.location.pathname);
+                    console.log ("document.location: " + document.location);
+                    // Allow form inputs to submit on enter key.
+                    function enterKey(e) {
+                        if (event.key === "Enter") {
+                            validateForm();
+                        }
+                    }
+
+                    // Check if form inputs are valid.
+                    function validateForm() {
+
+                        // Check username
+                        var name = document.forms["myForm"]["name"].value;
+
+                        if (name == "") {
+                            alert("Name must be filled out!");
+                            return false;
+                        }
+
+                        // Check Password
+                        var pass = document.forms["myForm"]["pass"].value;
+
+                        if (pass == "") {
+                            alert("Password must be filled out!");
+                            return false;
+                        }
+
+                        // Store username and password inside a dictionary
+                        var login_dictionary = {"username": name, "password":pass};
+
+                        // Send username and password to the backend to check against values in the DB
+                        send_login_supply(login_dictionary);
+                        return false;
+                    }
+        </script>
+    </body>
+    <footer>
+        <br><small>
+        <center>
+          <!-- Credits To: -->
+        Website designed by Hudson Smoot, and Erik Hernandez<br><br>
+        Team 12: Will Luong, Jeffrey Quade, Colby Tang, Erik Hernandez, Hudson Smoot
+        <br><br><br>
+        <p id="server_status"></p>
+        </center></small>
+    </footer>
+</html>

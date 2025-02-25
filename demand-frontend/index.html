@@ -1,0 +1,88 @@
+<!-- Team 12 Demand Landing Page
+-->
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>
+            Demand Team 12 Home Page
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/demand.css">
+    </head>
+
+    <body>
+        <div class="mainbody">
+            <h2>Welcome to the Demand TEAM 12 Homie Page</h2>
+            <center>
+            <div class="loginForm">
+                <div class="formHeader">
+                <h3>Login</h3>
+                </div>
+                <form name="myForm">
+                    <br><br>
+                    <input class="inputHomePage" type="text" placeholder="Username" name="name" onkeydown="enterKey(this)">
+                    <br><br>
+                    <input class="inputHomePage" type="password" placeholder="Password" name="pass" onkeydown="enterKey(this)">
+                    <br><br><br>
+                    <button id="submitButton" name="submitButton" type="button" onclick="validateForm()">Submit</button>
+                    <br><br>
+                </form>
+                <button class="registerButton" onclick="load_page('register.html')">Register</button><br><br>
+                <!-- <button class="registerButton" onclick="load_page('order.html')">Order</button><br><br> -->
+            </div>
+            </center>
+            <br>
+        </div>
+        <script>
+            // Allow form inputs to submit on enter key.
+            function enterKey(e) {
+                if (event.key === "Enter") {
+                    validateForm();
+                }
+            }
+
+            // Check if form inputs are valid.
+            function validateForm() {
+
+                // Check username
+                var name = document.forms["myForm"]["name"].value;
+
+                if (name == "") {
+                    alert("Name must be filled out!");
+                    return false;
+                }
+
+                // Check Password
+                var pass = document.forms["myForm"]["pass"].value;
+
+                if (pass == "") {
+                    alert("Password must be filled out!");
+                    return false;
+                }
+
+                // Store username and password inside a dictionary
+                var login_dictionary = {"username": name, "password":pass};
+
+                // Send username and password to the backend to check against values in the DB
+                send_login_demand(login_dictionary);
+                return false;
+            }
+        </script>
+        <footer>
+            <br><small>
+    
+            <!-- Credits -->
+    
+            Website designed by Colby Tang and Hudson Smoot<br><br>
+            Team 12: Will Luong, Jeffrey Quade, Colby Tang, Erik Hernandez, Hudson Smoot
+            <br><br><br>
+            
+            </small>
+            <p id="server_status"></p>
+        </footer>
+        <script src="../cs/js/login_request.js"></script>
+        <script src="../cs/js/utils.js"></script>
+        <script src="../cs/js/server_status.js"></script>
+        <script>ping_server();</script>
+    </body>
+</html>
