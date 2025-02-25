@@ -1,6 +1,6 @@
 # WeGo POC - Software Engineering Project
 
-This is an archive of my group project in a Software Engineering course where we simulated an agile team environment with our professor being the PO.
+This is an archive of my group project in a Software Engineering course during Spring 2020 where we simulated an agile team environment with our professor being the PO.
 
 We developed a multi-cloud solution to simulate an autonomous delivery service using Mapbox, Python, Javascript, and MongoDB. This project is split into two parts: Supply and Demand. Supply handles the customer logic and data while Demand handles the autonomous vehicle aspect.
 
